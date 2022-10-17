@@ -7,13 +7,13 @@
         <div class="col-8 vh-10 mx-auto">
             <canvas id="myChart"></canvas>
         </div>
-        <x-card-index Title="Frecuencia Cardiaca" :Value="$data->overallData->frecuencia_cardiaca"
+        <x-cardindex Title="Frecuencia Cardiaca" :Value="$data->overallData->frecuencia_cardiaca"
             :Time="$data->overallData->created_at" :Type="0" />
-        <x-card-index Title="Temperatura" :Value="$data->overallData->temperatura"
+        <x-cardindex Title="Temperatura" :Value="$data->overallData->temperatura"
             :Time="$data->overallData->created_at" :Type="1" />
-        <x-card-index Title="Frecuencia Respiratoria" :Value="$data->overallData->frecuencia_respiratoria"
+        <x-cardindex Title="Frecuencia Respiratoria" :Value="$data->overallData->frecuencia_respiratoria"
             :Time="$data->overallData->created_at" :Type="2" />
-        <x-card-index Title="Saturacion" :Value="$data->overallData->saturacion" :Time="$data->overallData->created_at"
+        <x-cardindex Title="Saturacion" :Value="$data->overallData->saturacion" :Time="$data->overallData->created_at"
             :Type="3" />
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
