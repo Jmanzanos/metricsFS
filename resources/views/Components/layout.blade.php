@@ -17,10 +17,6 @@
 
 <body>
     <div class="container-fluid">
-
-        <?php
-            $variable1 = "asdasd" 
-        ?>
         {{$slot}}
     </div>
 </body>
