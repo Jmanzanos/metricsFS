@@ -23,7 +23,7 @@ class DataController extends Controller
     {
         $items = Data::getRecords($type);
 
-        return view('index-records', [
+        return view('components.index-records', [
             'items' => $items
         ]);
     }
