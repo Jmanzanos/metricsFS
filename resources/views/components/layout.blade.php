@@ -7,7 +7,8 @@
 
     <title>Monitoreo Remoto</title>
 
-    @vite(['resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('build/assets/app.4237e5f7.css') }}">
+    <script src="{{asset('build/assets/app.ec633a69.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
