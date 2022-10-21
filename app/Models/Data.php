@@ -70,7 +70,8 @@ class Data extends Model
         }
         if ($target != null) {
 
-            $query = Self::take(12)->orderBy("created_at", "asc")->get();
+            $query = Self::orderBy("id", "desc")->take(12)->get();
+            $query = $query->sortBy("id");
             $array = [];
             foreach ($query as $item) {
                 $created_at = $item->created_at;
