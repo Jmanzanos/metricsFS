@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Data;
+use App\Models\Files;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -107,6 +108,11 @@ class DatabaseSeeder extends Seeder
             'temperatura' => 75,
             'frecuencia_respiratoria' => 85,
             'saturacion' => 120
+        ]);
+
+        Files::create([
+            'ruta_imagen' => '/files/uploaded_image.jpg',
+            'ruta_audio' => '/files/uploaded_audio.mp3'
         ]);
     }
 }

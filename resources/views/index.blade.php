@@ -7,6 +7,10 @@
         <div class="col-8 vh-10 mx-auto">
             <canvas id="myChart"></canvas>
         </div>
+        <div class="col-12 text-center pt-3">
+            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal" data-recipient="Imagen en el Servidor" data-type="image"><i class="bi bi-image"></i> Imagen</a>
+            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal" data-recipient="Audio en el Servidor" data-type="audio"><i class="bi bi-music-note-beamed"></i> Audio</a>
+        </div>
         <x-index-card Title="Frecuencia Cardiaca" :Value="$data->overallData->frecuencia_cardiaca"
             :Time="$data->overallData->created_at" :Type="0" />
         <x-index-card Title="Temperatura" :Value="$data->overallData->temperatura"
@@ -24,6 +28,28 @@
                     <h5 class="modal-title mx-auto" id="exampleModalLabel">Modal title</h5>
                 </div>
                 <div class="modal-body container" id="modalBody">
+                    <div class="row px-2 justify-content-center">
+                        <div class="col-auto">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="filesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="exampleModalLabel">Modal title</h5>
+                </div>
+                <div class="modal-body container text-center" id="fileBody">
                     <div class="row px-2 justify-content-center">
                         <div class="col-auto">
                             <div class="spinner-border text-primary" role="status">
@@ -67,20 +93,31 @@
 
         const myChart = new Chart(document.getElementById('myChart'), config)
 
-        function showData(type){
-            $('#modalBody').empty().html("<div class='row px-2 justify-content-center'><div class='col-auto'><div class='spinner-border text-primary' role='status'><span class='sr-only'></span></div></div></div>")
-            $.get('/modal/' + type, function(data){
-                $('#modalBody').empty().html(data)
-            })
-        }
-
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var recipient = button.data('recipient')
             var type = button.data('type')
             var modal = $(this)
-            var content = showData(type)
             modal.find('.modal-title').text(recipient)
+            $('#modalBody').empty().html("<div class='row px-2 justify-content-center'><div class='col-auto'><div class='spinner-border text-primary' role='status'><span class='sr-only'></span></div></div></div>")
+            $.get('/modal/' + type, function(data){
+                $('#modalBody').empty().html(data)
+            })
+        })
+
+        $('#filesModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('recipient')
+            var type = button.data('type')
+            var modal = $(this)
+            modal.find('.modal-title').text(recipient)
+            $('#fileBody').empty().html("<div class='row px-2 justify-content-center'><div class='col-auto'><div class='spinner-border text-primary' role='status'><span class='sr-only'></span></div></div></div>")
+            if(type == "image"){
+                $('#fileBody').empty().html("<img src='{{asset('/storage/uploaded_image.jpg')}}'/>")
+            }
+            else{
+                $('#fileBody').empty().html("<audio controls><source src='{{asset('/storage/uploaded_audio.mp3')}}'></audio>")                
+            }
         })
 
         setInterval(function(){

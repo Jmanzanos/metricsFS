@@ -16,6 +16,8 @@ use App\Http\Controllers\ApiController;
 */
 
 Route::post('/data',[ApiController::class, 'addData']);
+Route::post('/image',[ApiController::class, 'addImage']);
+Route::post('/audio',[ApiController::class, 'addAudio']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
