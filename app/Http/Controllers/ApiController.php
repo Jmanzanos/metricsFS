@@ -20,7 +20,7 @@ class ApiController extends Controller
     public function addImage(Request $request)
     {
         $data = base64_decode($request->data);
-        Storage::disk('public')->put("uploaded_image.png", $data);
+        Storage::disk('public')->put("uploaded_image.jpg", $data);
         return ["message" => 'Imagen Actualizada'];
     }
 
