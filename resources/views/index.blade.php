@@ -116,7 +116,7 @@
                 $('#fileBody').empty().html("<img src='{{asset('/storage/uploaded_image.jpg')}}'/>")
             }
             else{
-                $('#fileBody').empty().html("<audio controls><source src='{{asset('/storage/uploaded_audio.mp3')}}'></audio>")                
+                $('#fileBody').empty().html("<audio controls><source src='{{asset('/storage/uploaded_audio.wav')}}'></audio>")                
             }
         })
 
