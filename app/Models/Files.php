@@ -10,7 +10,8 @@ class Files extends Model
     use HasFactory;
 
     protected $fillable = [
-        'ruta_imagen',
-        'ruta_audio'
+        'image',
+        'audio',
+        'machine_id'
     ];
 }

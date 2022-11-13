@@ -14,10 +14,6 @@ class frecuencias_respiratorias extends Model
         'machine_id',
     ];
 
-    protected $attributes = [
-        'machine_id' => 0,
-    ];
-
     public static function getLatest()
     {
         $query = Self::latest()->get();

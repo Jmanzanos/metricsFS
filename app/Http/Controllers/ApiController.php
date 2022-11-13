@@ -19,26 +19,30 @@ class ApiController extends Controller
         if ($request->electrocardiograma && count($request->electrocardiograma) > 0) {
             foreach ($request->electrocardiograma as $item) {
                 electrocardiogramas::create([
-                    "value" => $item
+                    "value" => $item,
+                    "machine_id" => 0
                 ]);
                 $response .= "Electrocardiograma " . $item . " agregado, ";
             }
         }
         if ($request->frecuencia_cardiaca) {
             frecuencias_cardiacas::create([
-                "value" => $request->frecuencia_cardiaca
+                "value" => $request->frecuencia_cardiaca,
+                "machine_id" => 0
             ]);
             $response .= "frecuencia_cardiaca " . $request->frecuencia_cardiaca . " agregada, ";
         }
         if ($request->temperatura) {
             temperaturas::create([
-                "value" => $request->temperatura
+                "value" => $request->temperatura,
+                "machine_id" => 0
             ]);
             $response .= "temperatura " . $request->temperatura . " agregada, ";
         }
         if ($request->saturacion) {
             saturaciones::create([
-                "value" => $request->saturacion
+                "value" => $request->saturacion,
+                "machine_id" => 0
             ]);
             $response .= "saturacion " . $request->saturacion . " agregado, ";
         }

@@ -25,57 +25,74 @@ class DatabaseSeeder extends Seeder
 
         //LLenar la tabla Data con datos temporales
         electrocardiogramas::create([
-            "value" => 100.1
+            "value" => 100.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 105.1
+            "value" => 105.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 110.1
+            "value" => 110.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 115.1
+            "value" => 115.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 120.1
+            "value" => 120.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 125.1
+            "value" => 125.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 130.1
+            "value" => 130.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 135.1
+            "value" => 135.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 140.1
+            "value" => 140.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 145.1
+            "value" => 145.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 150.1
+            "value" => 150.1,
+            "machine_id" => 0
         ]);
         electrocardiogramas::create([
-            "value" => 155.1
+            "value" => 155.1,
+            "machine_id" => 0
         ]);
         frecuencias_cardiacas::create([
-            "value" => 65
+            "value" => 65,
+            "machine_id" => 0
         ]);
         temperaturas::create([
-            "value" => 75
+            "value" => 75.5,
+            "machine_id" => 0
         ]);
         frecuencias_respiratorias::create([
-            "value" => 85
+            "value" => 85,
+            "machine_id" => 0
         ]);
         saturaciones::create([
-            "value" => 120
+            "value" => 120,
+            "machine_id" => 0
         ]);
 
         Files::create([
-            'ruta_imagen' => '/files/uploaded_image.jpg',
-            'ruta_audio' => '/files/uploaded_audio.mp3'
+            'image' => '/users/0/uploaded_image.jpg',
+            'audio' => '/users/0/uploaded_audio.wav',
+            "machine_id" => 0
         ]);
     }
 }
