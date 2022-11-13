@@ -8,17 +8,20 @@
             <canvas id="myChart"></canvas>
         </div>
         <div class="col-12 text-center pt-3">
-            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal" data-recipient="Imagen en el Servidor" data-type="image"><i class="bi bi-image"></i> Imagen</a>
-            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal" data-recipient="Audio en el Servidor" data-type="audio"><i class="bi bi-music-note-beamed"></i> Audio</a>
+            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal"
+                data-recipient="Imagen en el Servidor" data-type="image"><i class="bi bi-image"></i> Imagen</a>
+            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal"
+                data-recipient="Audio en el Servidor" data-type="audio"><i class="bi bi-music-note-beamed"></i>
+                Audio</a>
         </div>
         <x-index-card Title="Frecuencia Cardiaca" :Value="$data->overallData->frecuencia_cardiaca"
-            :Time="$data->overallData->created_at" :Type="0" />
+            :Time="$data->overallData->frecuencia_cardiaca_timestamp" :Type="0" />
         <x-index-card Title="Temperatura" :Value="$data->overallData->temperatura"
-            :Time="$data->overallData->created_at" :Type="1" />
+            :Time="$data->overallData->temperatura_timestamp" :Type="1" />
         <x-index-card Title="Frecuencia Respiratoria" :Value="$data->overallData->frecuencia_respiratoria"
-            :Time="$data->overallData->created_at" :Type="2" />
-        <x-index-card Title="Saturacion" :Value="$data->overallData->saturacion" :Time="$data->overallData->created_at"
-            :Type="3" />
+            :Time="$data->overallData->frecuencia_respiratoria_timestamp" :Type="2" />
+        <x-index-card Title="Saturacion" :Value="$data->overallData->saturacion"
+            :Time="$data->overallData->saturacion_timestamp" :Type="3" />
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -177,11 +180,11 @@
                 }
             }
 
-            var timestamp = "Ultima Actualizacion: " + array["overallData"]["created_at"]
-            $("#time_type_0").empty().html(timestamp)
-            $("#time_type_1").empty().html(timestamp)
-            $("#time_type_2").empty().html(timestamp)
-            $("#time_type_3").empty().html(timestamp)
+            var timestamp = "Ultima Actualizacion: "
+            $("#time_type_0").empty().html(timestamp + array["overallData"]["frecuencia_cardiaca_timestamp"])
+            $("#time_type_1").empty().html(timestamp + array["overallData"]["temperatura_timestamp"])
+            $("#time_type_2").empty().html(timestamp + array["overallData"]["frecuencia_respiratoria_timestamp"])
+            $("#time_type_3").empty().html(timestamp + array["overallData"]["saturacion_timestamp"])
 
             myChart.data.datasets[0].data = array["ecg"];
             myChart.data.labels = array["created_at"];

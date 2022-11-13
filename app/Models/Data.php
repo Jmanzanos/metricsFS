@@ -3,25 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Data extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'electrocardiograma',
-        'frecuencia_cardiaca',
-        'temperatura',
-        'frecuencia_respiratoria',
-        'saturacion'
-    ];
-
     public static function getLineChartData()
     {
-
-        $query = Self::orderBy("id", "desc")->take(12)->get();
-        $query = $query->sortBy("id");
+        $query = electrocardiogramas::getAmmount(12, true);
         $array = [
             "ecg" => [],
             "created_at" => []
@@ -29,7 +16,7 @@ class Data extends Model
 
         if ($query->count() > 0) {
             foreach ($query as $item) {
-                $ecg = $item->electrocardiograma;
+                $ecg = $item->value;
                 settype($ecg, "double");
                 $created_at = $item->created_at->format('H:i:s');
                 settype($created_at, "string");
@@ -44,40 +31,72 @@ class Data extends Model
 
     public static function getOverall()
     {
-        $query = Self::latest()->take(1)->get();
-        $query = $query["0"]->attributes;
+        $array = [
+            "frecuencia_cardiaca" => 0,
+            "frecuencia_respiratoria" => 0,
+            "saturacion" => 0,
+            "temperatura" => 0
+        ];
+        $query = frecuencias_cardiacas::getLatest();
+        if ($query) {
+            $array["frecuencia_cardiaca"] = $query->value;
+            $timestamp = $query->created_at->format('d/m/Y H:i:s');
+            settype($created_at, "string");
+            $array["frecuencia_cardiaca_timestamp"] = $timestamp;
+        }
+        $query = frecuencias_respiratorias::getLatest();
+        if ($query) {
+            $array["frecuencia_respiratoria"] = $query->value;
+            $timestamp = $query->created_at->format('d/m/Y H:i:s');
+            settype($created_at, "string");
+            $array["frecuencia_respiratoria_timestamp"] = $timestamp;
+        }
+        $query = saturaciones::getLatest();
+        if ($query) {
+            $array["saturacion"] = $query->value;
+            $timestamp = $query->created_at->format('d/m/Y H:i:s');
+            settype($created_at, "string");
+            $array["saturacion_timestamp"] = $timestamp;
+        }
+        $query = temperaturas::getLatest();
+        if ($query) {
+            $array["temperatura"] = $query->value;
+            $timestamp = $query->created_at->format('d/m/Y H:i:s');
+            settype($created_at, "string");
+            $array["temperatura_timestamp"] = $timestamp;
+        }
 
-        return $query;
+        return $array;
     }
 
-    public static function getRecords($type)
+    public static function getRecords($type, $ammount)
     {
-        $target = null;
+        $query = null;
         $array = null;
         switch ($type) {
             case 0:
-                $target = "frecuencia_cardiaca";
+                $query = frecuencias_cardiacas::getAmmount($ammount, true);
                 break;
             case 1:
-                $target = "temperatura";
+                $query = temperaturas::getAmmount($ammount, true);
                 break;
             case 2:
-                $target = "frecuencia_respiratoria";
+                $query = frecuencias_respiratorias::getAmmount($ammount, true);
                 break;
             case 3:
-                $target = "saturacion";
+                $query = saturaciones::getAmmount($ammount, true);
+                break;
+            default:
                 break;
         }
-        if ($target != null) {
+        if ($query) {
 
-            $query = Self::orderBy("id", "desc")->take(12)->get();
-            $query = $query->sortBy("id");
             $array = [];
             foreach ($query as $item) {
-                $created_at = $item->created_at;
+                $created_at = $item->created_at->format('d/m/Y H:i:s');
                 settype($created_at, "string");
                 $array_item = [
-                    "value" => $item[$target],
+                    "value" => $item->value,
                     "created_at" => $created_at
                 ];
                 array_push($array, $array_item);

@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data', function (Blueprint $table) {
+        Schema::create('frecuencias_cardiacas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('electrocardiograma');
-            $table->integer('frecuencia_cardiaca');
-            $table->integer('temperatura');
-            $table->integer('frecuencia_respiratoria');
-            $table->integer('saturacion');
+            $table->integer('value');
+            $table->integer('machine_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data');
+        Schema::dropIfExists('frecuencias_cardiacas');
     }
 };

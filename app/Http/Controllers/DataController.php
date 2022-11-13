@@ -21,7 +21,7 @@ class DataController extends Controller
 
     public function getRecords($type)
     {
-        $items = Data::getRecords($type);
+        $items = Data::getRecords($type, 12);
 
         return view('components.index-records', [
             'items' => $items

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Data;
-use Illuminate\Http\File;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\electrocardiogramas;
+use App\Models\frecuencias_cardiacas;
+use App\Models\frecuencias_respiratorias;
+use App\Models\saturaciones;
+use App\Models\temperaturas;
 use Illuminate\Support\Facades\Storage;
 
 class ApiController extends Controller
@@ -13,8 +15,40 @@ class ApiController extends Controller
 
     public function addData(Request $request)
     {
-
-        return Data::create($request->all());
+        $response = "";
+        if ($request->electrocardiograma && count($request->electrocardiograma) > 0) {
+            foreach ($request->electrocardiograma as $item) {
+                electrocardiogramas::create([
+                    "value" => $item
+                ]);
+                $response .= "Electrocardiograma " . $item . " agregado, ";
+            }
+        }
+        if ($request->frecuencia_cardiaca) {
+            frecuencias_cardiacas::create([
+                "value" => $request->frecuencia_cardiaca
+            ]);
+            $response .= "frecuencia_cardiaca " . $request->frecuencia_cardiaca . " agregada, ";
+        }
+        if ($request->temperatura) {
+            temperaturas::create([
+                "value" => $request->temperatura
+            ]);
+            $response .= "temperatura " . $request->temperatura . " agregada, ";
+        }
+        if ($request->saturacion) {
+            saturaciones::create([
+                "value" => $request->saturacion
+            ]);
+            $response .= "saturacion " . $request->saturacion . " agregado, ";
+        }
+        if ($request->frecuencia_respiratoria) {
+            frecuencias_respiratorias::create([
+                "value" => $request->frecuencia_respiratoria
+            ]);
+            $response .= "frecuencia_respiratoria " . $request->frecuencia_respiratoria . " agregada";
+        }
+        return ["message" => $response];
     }
 
     public function addImage(Request $request)
