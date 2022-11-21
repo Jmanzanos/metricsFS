@@ -48,7 +48,8 @@ class ApiController extends Controller
         }
         if ($request->frecuencia_respiratoria) {
             frecuencias_respiratorias::create([
-                "value" => $request->frecuencia_respiratoria
+                "value" => $request->frecuencia_respiratoria,
+                "machine_id" => 0
             ]);
             $response .= "frecuencia_respiratoria " . $request->frecuencia_respiratoria . " agregada";
         }
