@@ -143,40 +143,40 @@
             $("#value_type_2").empty().html(frecuencia_respiratoria)
             $("#value_type_3").empty().html(saturacion)
 
-            if(frecuencia_cardiaca >= 100){
-                $("#badge_type_0").empty().html("<span class='badge rounded-pill bg-danger'>Peligro</span>")
+            if(frecuencia_cardiaca >= 110){
+                $("#badge_type_0").empty().html("<span class='badge rounded-pill bg-danger'>Alto</span>")
             }else{
-                if(frecuencia_cardiaca >= 80){
-                    $("#badge_type_0").empty().html("<span class='badge rounded-pill bg-warning'>Advertencia</span>")
-                }else{
+                if(frecuencia_cardiaca >= 50){
                     $("#badge_type_0").empty().html("<span class='badge rounded-pill bg-success'>Estable</span>")
+                }else{
+                    $("#badge_type_0").empty().html("<span class='badge rounded-pill bg-danger'>Bajo</span>")
                 }
             }
-            if(temperatura >= 100){
-                $("#badge_type_1").empty().html("<span class='badge rounded-pill bg-danger'>Peligro</span>")
+            if(temperatura >= 38){
+                $("#badge_type_1").empty().html("<span class='badge rounded-pill bg-danger'>Alto</span>")
             }else{
-                if(temperatura >= 80){
-                    $("#badge_type_1").empty().html("<span class='badge rounded-pill bg-warning'>Advertencia</span>")
-                }else{
+                if(temperatura >= 36){
                     $("#badge_type_1").empty().html("<span class='badge rounded-pill bg-success'>Estable</span>")
+                }else{
+                    $("#badge_type_1").empty().html("<span class='badge rounded-pill bg-danger'>Bajo</span>")
                 }
             }
-            if(frecuencia_respiratoria >= 100){
-                $("#badge_type_2").empty().html("<span class='badge rounded-pill bg-danger'>Peligro</span>")
+            if(frecuencia_respiratoria >= 24){
+                $("#badge_type_2").empty().html("<span class='badge rounded-pill bg-danger'>Alto</span>")
             }else{
-                if(frecuencia_respiratoria >= 80){
-                    $("#badge_type_2").empty().html("<span class='badge rounded-pill bg-warning'>Advertencia</span>")
-                }else{
+                if(frecuencia_respiratoria >= 9){
                     $("#badge_type_2").empty().html("<span class='badge rounded-pill bg-success'>Estable</span>")
+                }else{
+                    $("#badge_type_2").empty().html("<span class='badge rounded-pill bg-danger'>Bajo</span>")
                 }
             }
-            if(saturacion >= 100){
-                $("#badge_type_3").empty().html("<span class='badge rounded-pill bg-danger'>Peligro</span>")
+            if(saturacion >= 101){
+                $("#badge_type_3").empty().html("<span class='badge rounded-pill bg-danger'>Alto</span>")
             }else{
-                if(saturacion >= 80){
-                    $("#badge_type_3").empty().html("<span class='badge rounded-pill bg-warning'>Advertencia</span>")
-                }else{
+                if(saturacion >= 96){
                     $("#badge_type_3").empty().html("<span class='badge rounded-pill bg-success'>Estable</span>")
+                }else{
+                    $("#badge_type_3").empty().html("<span class='badge rounded-pill bg-danger'>Bajo</span>")
                 }
             }
 
