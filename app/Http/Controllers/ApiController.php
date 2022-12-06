@@ -69,4 +69,9 @@ class ApiController extends Controller
         Storage::disk('public')->put("uploaded_audio.wav", $data);
         return ["message" => 'Audio Actualizado'];
     }
+
+    //function otaUpdate()
+    //{
+    //    return ["otastate"=>"1"];
+    //}
 }

@@ -191,7 +191,7 @@
             myChart.data.labels = array["created_at"];
             myChart.update()
         })
-        },500);
+        },200);
         })
 
     </script>
