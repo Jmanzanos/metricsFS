@@ -10,9 +10,10 @@
         <div class="col-12 text-center pt-3">
             <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal"
                 data-recipient="Imagen en el Servidor" data-type="image"><i class="bi bi-image"></i> Imagen</a>
-            <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#filesModal"
+            <a type="button" class="btn btn-primary btn-lg" href="https://firebasestorage.googleapis.com/v0/b/capstone7monitor.appspot.com/o/recording.wav?alt=media&token=00e30832-0c11-42f8-ace8-78a77e4cf3d2" target="_blank"
                 data-recipient="Audio en el Servidor" data-type="audio"><i class="bi bi-music-note-beamed"></i>
                 Audio</a>
+            <a type="button" class="btn btn-primary btn-lg"><i class="bi bi-arrow-down-circle"></i>OTA</a>
         </div>
         <x-index-card Title="Frecuencia Cardiaca" :Value="$data->overallData->frecuencia_cardiaca"
             :Time="$data->overallData->frecuencia_cardiaca_timestamp" :Type="0" />
@@ -73,7 +74,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-
+            
         var text = "{{$data->created_at}}"
         const labels = JSON.parse(text.replace(/&quot;/g, '"'))
         const daita = {{$data->ecg}}

@@ -8,7 +8,7 @@ class Data extends Model
 {
     public static function getLineChartData()
     {
-        $query = electrocardiogramas::getAmmount(400, true);
+        $query = electrocardiogramas::getAmmount(200, true);
         $array = [
             "ecg" => [],
             "created_at" => []
