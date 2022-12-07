@@ -70,9 +70,9 @@ class ApiController extends Controller
         return ["message" => 'Audio Actualizado'];
     }
 
-    public function otaUpdate()
+    public function otaUpdate(Request $request)
     {
-        $data = 0;
+        $data = $request->data;
         Storage::disk('public')->put("ota.txt", $data);
         return ["message"=>"done"];
     }
